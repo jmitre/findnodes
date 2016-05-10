@@ -22,7 +22,7 @@ func main() {
 	
 	reader := bufio.NewReader(f)
 	
-	line , err := reader.ReadString('\n')//Dosen't stop when it hits a line break
+	line , err := reader.ReadString('\n')
 	
 	fmt.Print(line)
 
