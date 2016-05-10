@@ -2,9 +2,9 @@ package main
 //import "fmt"
 
 func main() {
-	var s = new(serendia)
-	s.addNode(node{"Velia", true})
-	s.addNode(node{"Heidel", true})
+	var s = new(region)
+	s.addnode(node{"Velia", true})
+	s.addnode(node{"Heidel", true})
 	s.Display()
 }
 
