@@ -2,7 +2,6 @@ package main
 
 import "fmt"
 
-//serendia may not be the best name, because all continents behave like this
 type region struct{
 	nodes [] node
 	index int
