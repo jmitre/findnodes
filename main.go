@@ -11,7 +11,7 @@ import(
 )
 
 func check(e error){
-	if e != nil{
+	if e != nil && e != io.EOF{
 		panic(e)
 	}
 }
@@ -36,7 +36,7 @@ func readNodes(r *region){
 
 	for err != io.EOF {
 		line , err = reader.ReadString('\n')
-//		check(*err)
+		check(err)
 		line = strings.TrimSpace(line)
 		r.addnode(node{line, false})
 	}
