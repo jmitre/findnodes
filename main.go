@@ -2,11 +2,12 @@ package main
 //import "fmt"
 
 import(
-	"fmt"
+	//"fmt"
 	"bufio"
-	//"io"
+	"io"
 	//"io/ioutil"
 	"os"
+	"strings"
 )
 
 func check(e error){
@@ -17,20 +18,29 @@ func check(e error){
 	
 
 func main() {
+	var s = new(region)
+
+
+	readNodes(s);
+
+	s.Display()
+}
+
+func readNodes(r *region){
 	f, err := os.Open("NodeList.txt")
 	check(err)
 	
 	reader := bufio.NewReader(f)
 	
-	line , err := reader.ReadString('\n')
+	var line string
+
+	for err != io.EOF {
+		line , err = reader.ReadString('\n')
+//		check(*err)
+		line = strings.TrimSpace(line)
+		r.addnode(node{line, false})
+	}
 	
-	fmt.Print(line)
-
-
-	var s = new(region)
-	s.addnode(node{"Velia", true})
-	s.addnode(node{"Heidel", true})
-	//s.Display()
+	
 }
-
 
