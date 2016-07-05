@@ -1,9 +1,9 @@
 package main
 
-import "fmt"
+import "strings"
 
 type region struct{
-	nodes [] node
+	nodes []node
 	index int
 }
 
@@ -11,8 +11,10 @@ func (s *region) addnode (n node){
 	s.nodes = append(s.nodes, n)
 }
 
-func (r region) Display (){
+func (r region) String () string{
+	var returnString = ""
 	for _,n := range r.nodes {
-		fmt.Println(n)
+		returnString += n.String() + "\n"
 	}
+	return strings.TrimSpace(returnString)
 }
