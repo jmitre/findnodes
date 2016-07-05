@@ -14,7 +14,7 @@ func TestNode(t *testing.T){
 
 func TestRegionInit(t *testing.T){
   var r = new(region)
-  var emptyArr = []node(nil)
+  var emptyArr = []*node(nil)
 
   assert.Equal(t, r.nodes, emptyArr, "A region should be initialized with an empty nodes array")
 }
@@ -27,6 +27,27 @@ func TestRegionAddNode(t *testing.T){
   assert.Equal(t, r.nodes[0].isTrade, false, "The addnode function correctly adds nodes")
 }
 
+func TestFindNode(t *testing.T){
+  var r = new(region)
+  r.addnode(node{"Olivia", false})
+  r.addnode(node{"Vellia", false})
+  r.addnode(node{"Heidel", true})
+  var foundNode = r.findNode("Vellia")
+
+  assert.Equal(t, foundNode.String(), "Vellia false")
+}
+
+func TestMakeTradable(t *testing.T){
+  var r = new(region)
+  r.addnode(node{"Olivia", false})
+  r.addnode(node{"Vellia", false})
+  r.addnode(node{"Heidel", false})
+  r.makeTradable("Vellia")
+  var foundNode = r.findNode("Vellia")
+
+  assert.Equal(t, foundNode.String(), "Vellia true")
+}
+
 func TestOutputString(t *testing.T){
   var r = new(region)
   r.addnode(node{"Olivia", false})
@@ -35,5 +56,5 @@ func TestOutputString(t *testing.T){
 
   var output = r.String()
 
-  assert.Equal(t, output, "Olivia false\nVellia false\nHeidel true", "After a region is filled with nodes, it should output a string representing those nodes")
+  assert.Equal(t, output, "Olivia false\nVellia false\nHeidel true", "after a region is filled with nodes, it should output a string representing those nodes")
 }
