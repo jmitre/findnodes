@@ -34,7 +34,7 @@ func TestFindNode(t *testing.T){
   r.addnode(node{"Heidel", true})
   var foundNode = r.findNode("Vellia")
 
-  assert.Equal(t, foundNode.String(), "Vellia false")
+  assert.Equal(t, foundNode.String(), "Vellia false", "Given the correct name, findNode returns the correct node")
 }
 
 func TestMakeTradable(t *testing.T){
@@ -45,7 +45,7 @@ func TestMakeTradable(t *testing.T){
   r.makeTradable("Vellia")
   var foundNode = r.findNode("Vellia")
 
-  assert.Equal(t, foundNode.String(), "Vellia true")
+  assert.Equal(t, foundNode.String(), "Vellia true", "makeTradable changes the isTrade attribute to true, on the node specified")
 }
 
 func TestOutputString(t *testing.T){
