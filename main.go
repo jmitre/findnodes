@@ -8,6 +8,7 @@ import(
 	"os"
 	"strings"
 	"fmt"
+	"strconv"
 )
 
 func check(e error){
@@ -37,9 +38,11 @@ func readNodes(r *region){
 		check(err)
 
 		line = strings.TrimSpace(line)
-
+		seperated := strings.Split(line, " ")
 		if line != "" {
-			r.addnode(node{line, false})
+			fmt.Println(seperated[1])
+			cost, _ := strconv.Atoi(seperated[1])
+			r.addnode(node{seperated[0], false, cost})
 		}
 	}
 }
