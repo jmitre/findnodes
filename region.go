@@ -36,3 +36,14 @@ func (r region) String () string{
 	}
 	return strings.TrimSpace(returnString)
 }
+
+func (r *region) connect(source string, destination string) int{
+	var sourceNode = r.findNode(source)
+	var destinationNode = r.findNode(destination)
+
+	if sourceNode != nil && destinationNode != nil{
+		sourceNode.addLink(destinationNode)
+		return 1
+	}
+	return -1
+}
